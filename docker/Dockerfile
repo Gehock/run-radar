@@ -20,6 +20,10 @@ RUN : \
  && mkdir /srv/radar && chown radar.nogroup /srv/radar \
 \
  && cd /srv/radar \
+ && :
+
+WORKDIR /srv/radar
+RUN : \
   # clone and prebuild .pyc files
  && git clone --quiet --single-branch --branch $BRANCH https://github.com/gehock/radar.git . \
  && (echo "On branch $(git rev-parse --abbrev-ref HEAD) | $(git describe)"; echo; git log -n5) > GIT \
@@ -31,7 +35,10 @@ RUN : \
  && rm requirements.txt \
  && find /usr/local/lib/python* -type d -regex '.*/locale/[a-z_A-Z]+' -not -regex '.*/\(en\|fi\|sv\)' -print0 | xargs -0 rm -rf \
  && find /usr/local/lib/python* -type d -name 'tests' -print0 | xargs -0 rm -rf \
-\
+ && :
+
+# RUN mkdir -p /local/radar
+RUN : \
   # preprocess
  && export \
     RADAR_SECRET_KEY="-" \
