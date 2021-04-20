@@ -1,0 +1,16 @@
+services:
+  radar:
+    image: run-radar
+    # volumes:
+    # named persistent volume (until removed)
+    # - data:/data
+    # mount development version to /src/aplus
+    # - /home/user/a-radar/:/src/aplus/:ro
+    # or to /srv/aplus
+    # - /home/user/a-radar/:/srv/aplus/:ro
+    ports:
+    - "8000:8000"
+    # depends_on:
+    # - grader
+  volumes:
+  data:
