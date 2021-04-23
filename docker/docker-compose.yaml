@@ -14,6 +14,7 @@ services:
     # - /home/user/a-radar/:/srv/aplus/:ro
     ports:
     - "8001:8000"
+    - "5678:5678"
     # depends_on:
     # - grader
   grader:
