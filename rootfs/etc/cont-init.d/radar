@@ -2,13 +2,13 @@
 
 . /usr/local/lib/cont-init-functions.sh
 ENSURE_DIR_MODE=2755
-ENSURE_DIR_USER=aplus
+ENSURE_DIR_USER=radar
 ENSURE_DIR_GROUP=nogroup
 
-ensure_dir /run/aplus
-ensure_dir /local/aplus
-ensure_dir /local/aplus/static
-ensure_dir /local/aplus/media
+ensure_dir /run/radar
+ensure_dir /local/radar
+ensure_dir /local/radar/static
+ensure_dir /local/radar/media
 
 ensure_dir /local/lti-services-in 2777 root root
 

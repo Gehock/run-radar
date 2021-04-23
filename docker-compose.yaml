@@ -1,3 +1,7 @@
+version: '3'
+
+volumes:
+  data:
 services:
   radar:
     image: run-radar
@@ -9,8 +13,36 @@ services:
     # or to /srv/aplus
     # - /home/user/a-radar/:/srv/aplus/:ro
     ports:
-    - "8000:8000"
+    - "8001:8000"
     # depends_on:
     # - grader
-  volumes:
-  data:
+  grader:
+    image: apluslms/run-mooc-grader:1.8
+    volumes:
+      - data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/aplus:/tmp/aplus
+      - ./aplus-manual:/srv/courses/default:ro
+    ports:
+      - "8080:8080"
+  plus:
+    # image: apluslms/run-aplus-front:1.8
+    image: run-aplus-front:radar
+    volumes:
+      - data:/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      - grader
+  # acos:
+  #   image: apluslms/run-acos-server
+  #   user: $USER_ID:$USER_GID
+  #   ports:
+  #     - "3000:3000"
+  #   # depends_on is only used to control the start-up order of the containers so that
+  #   # the ACOS container would more likely be assigned the IP address hardcoded into the course configuration
+  #   depends_on:
+  #     - plus
+  #     - grader
+  #   #volumes:
+  #   #  - ./_data/acos/:/var/log/acos

@@ -46,3 +46,13 @@ services:
 volumes:
   data:
 ```
+
+
+## Additional
+
+```shell
+git clone aplus-manual
+cd 
+git submodule update --init
+./docker-compile.sh
+```
