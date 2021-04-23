@@ -57,4 +57,6 @@ RUN : \
 
 WORKDIR /srv/radar
 EXPOSE 8000
-CMD [ "manage", "runserver", "0.0.0.0:8000" ]
+RUN pip_install debugpy
+RUN apt_install htop netcat vim curl wget
+CMD [ "python3", "-m", "debugpy", "--listen", "0.0.0.0:5678", "--wait-for-client", "manage.py", "runserver", "0.0.0.0:8000" ]
