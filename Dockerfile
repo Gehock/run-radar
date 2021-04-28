@@ -5,8 +5,6 @@ ENV CONTAINER_TYPE="radar" \
     RADAR_LOCAL_SETTINGS="/srv/radar-cont-settings.py" \
     RADAR_SECRET_KEY_FILE="/local/radar/secret_key.py"
 
-COPY rootfs /
-
 ARG BRANCH=container
 RUN : \
  && apt_install \
@@ -20,6 +18,7 @@ RUN : \
 \
  && :
 
+COPY rootfs /
 COPY radar /srv/radar
 WORKDIR /srv/radar
 RUN : \
