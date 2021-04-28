@@ -37,6 +37,7 @@ CACHES = {
 # OVERRIDE_SUBMISSION_HOST = "http://plus:8000"
 
 #CELERY_BROKER_URL = "amqp://"
+CELERY_RESULT_BACKEND = 'file:///var/celery/results'
 
 LOGGING['loggers'].update({
     '': {
