@@ -59,4 +59,9 @@ WORKDIR /srv/radar
 EXPOSE 8000
 RUN pip_install debugpy
 RUN apt_install htop netcat vim curl wget
+# the pypi version doesn't support celery>=5
+RUN pip_install git+https://github.com/mher/flower#egg=flower
+EXPOSE 5555
+RUN mkdir -p /var/celery/results \
+ && chown radar:nogroup /var/celery/results
 CMD [ "python3", "-m", "debugpy", "--listen", "0.0.0.0:5678", "--wait-for-client", "manage.py", "runserver", "0.0.0.0:8000" ]
