@@ -60,6 +60,7 @@ RUN pip_install debugpy
 RUN apt_install htop netcat vim curl wget less
 # the pypi version doesn't support celery>=5
 RUN pip_install git+https://github.com/mher/flower#egg=flower
+# RUN apt_install memcached
 EXPOSE 8001
 EXPOSE 5555
 RUN mkdir -p /var/celery/results \
