@@ -21,6 +21,14 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': '/run/radar/django-cache',
     },
+    "exercise_templates": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": "/run/radar/django_cache_exercises",
+        "TIMEOUT": 3600,
+        "OPTIONS": {
+            "MAX_ENTRIES": 100,
+        },
+    },
 }
 
 # REMOTE_PAGE_HOSTS_MAP = {
