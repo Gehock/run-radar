@@ -13,7 +13,7 @@ services:
     # or to /srv/aplus
     # - /home/user/a-radar/:/srv/aplus/:ro
     ports:
-    - "8001:8000"
+    - "8001:8001"
     - "5678:5678"
     - "5679:5679"
     - "5555:5555"
