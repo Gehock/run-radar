@@ -64,4 +64,6 @@ RUN pip_install git+https://github.com/mher/flower#egg=flower
 EXPOSE 5555
 RUN mkdir -p /var/celery/results \
  && chown radar:nogroup /var/celery/results
+RUN mkdir -p /var/celery/results \
+ && chown radar:nogroup /var/celery/results
 CMD [ "python3", "-m", "debugpy", "--listen", "0.0.0.0:5678", "--wait-for-client", "manage.py", "runserver", "0.0.0.0:8000" ]
